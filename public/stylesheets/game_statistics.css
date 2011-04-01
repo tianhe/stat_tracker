@@ -1,0 +1,18 @@
+#statistic .clickable {
+  cursor:pointer;
+  text-transform: uppercase;
+}
+
+ul.display-pair {
+  /* Setting a common base */
+  margin: 1px;
+  padding: 1px;
+}
+
+ul.display-pair li {
+  display:inline-block;
+  width: 100px;
+  min-height: 50px;
+  background: #ccc;
+  vertical-align: top;
+}

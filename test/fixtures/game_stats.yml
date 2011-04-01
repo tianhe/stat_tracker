@@ -1,0 +1,29 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  fga: 1
+  fgm: 1
+  ftm: 1
+  fta: 1
+  tpm: 1
+  tpa: 1
+  orb: 1
+  drb: 1
+  ast: 1
+  to: 1
+  s: 1
+  pf: 1
+
+two:
+  fga: 1
+  fgm: 1
+  ftm: 1
+  fta: 1
+  tpm: 1
+  tpa: 1
+  orb: 1
+  drb: 1
+  ast: 1
+  to: 1
+  s: 1
+  pf: 1

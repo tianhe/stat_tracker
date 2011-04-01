@@ -1,0 +1,10 @@
+<ul>
+  <li>Id | Team Name</li>
+  <% @teams.each do |team| %>
+
+  <li>
+    <%= team.id %> |
+    <%= link_to "#{team.name}", edit_team_path(team) %> |
+  </li>
+<% end %>
+</ul>

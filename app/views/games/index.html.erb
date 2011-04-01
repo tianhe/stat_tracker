@@ -1,0 +1,10 @@
+<ul>
+  <li>Time | Description | Teams</li>
+<% @games.each do |game| %>
+  <li><%= game.time %> |
+    <%= link_to game.description, track_game_url(:id => game.id) %> |
+    <%= link_to game.visiting_team.name, edit_team_path(game.visiting_team) %> vs.
+    <%= link_to game.home_team.name, edit_team_path(game.home_team) %>
+  </li>
+<% end %>
+</ul>

@@ -1,0 +1,9 @@
+<ul>
+  <li>Game | Team | Player </li>
+<% @player_game_statistics.each do |game_stats| %>
+  <li><%= game_stats.game.description %> |
+    <%= game_stats.find_team.name %> |
+  <%= link_to game_stats.player.name, edit_player_game_statistic_path(game_stats) %>
+  </li>
+<% end %>
+</ul>
