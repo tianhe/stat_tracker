@@ -1,20 +1,28 @@
 <%= semantic_form_for team, :html => {:multipart => true} do |t| %>
   <%= t.input :name, :label => "Team Name" %>
+
   <ul id="players">
-  <%= t.semantic_fields_for :players do |p|%>
-    <!--<%# if p %>-->
-    <!--<%#= render :partial => '/games/player', :locals => {:player => p} %>-->
-    <!--<%# end %>-->
-    <%= p.input :first_name %>
-    <%= p.input :last_name %>
-    <!--<%#= p.input :number %>-->
-     <% unless p.object.new_record? %>
-      <% # Don't forget to name both of these '_destroy' in Rails 3 %>
-      <%= p.check_box '_destroy' %>
-      <%= p.label '_destroy', 'Remove' %>
+        <!--<%# if p %>-->
+        <!--<%#= render :partial => '/games/player', :locals => {:player => p} %>-->
+        <!--<%# end %>-->
+    <%= t.semantic_fields_for :players do |p_fields| %>
+      <%= p_fields.input :first_name %>
+      <%= p_fields.input :last_name %>
+
+      <%= t.semantic_fields_for :team_players do |tp_fields| %>
+        <%= tp_fields.input :number if tp_fields.object.player == p_fields.object %>
+      <% end %>
+
+      <% unless p_fields.object.new_record? %>
+        <% # Don't forget to name both of these '_destroy' in Rails 3 %>
+        <%= p_fields.check_box '_destroy' %>
+        <%= p_fields.label '_destroy', 'Remove' %>
+      <% end %>
     <% end %>
-  <% end %>
+
+    <!--<%#= p.input :number %>-->
   </ul>
+
   <%= link_to "Add a player", '#', :remote => true, :class => :add_player %>
   <%= t.submit %>
 <% end %>

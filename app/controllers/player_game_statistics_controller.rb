@@ -1,4 +1,4 @@
-class PlayerGameStatisticsController < ActionController::Base
+class PlayerGameStatisticsController < ApplicationController
   respond_to :html, :xml, :json
 
   def create
@@ -23,7 +23,7 @@ class PlayerGameStatisticsController < ActionController::Base
   def show
     @player_game_statistic = PlayerGameStatistic.find params[:id]
     respond_to do |format|
-      format.json { render :json => @player_game_statistic }
+      format.json { render :json => @player_game_statistic}
     end
   end
 

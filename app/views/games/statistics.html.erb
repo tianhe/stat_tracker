@@ -1,0 +1,50 @@
+<div class="table-wrapper">
+  <div class="table-caption">
+      <%= @game.visiting_team.name %>    
+  </div>
+
+  <div class="table-row">
+    <div class="stat">Number</div>
+    <div class="stat">Player</div>
+    <div class="stat"><%= "FG" %></div>
+    <div class="stat"><%= "%" %></div>
+    <div class="stat"><%= "3PT" %></div>
+    <div class="stat"><%= "3PT%" %></div>
+    <div class="stat"><%= "FT" %></div>
+    <div class="stat"><%= "FT%" %></div>
+    <div class="stat"><%= "DREB" %></div>
+    <div class="stat"><%= "OREB" %></div>
+    <div class="stat"><%= "REB" %></div>
+    <div class="stat"><%= "AST" %></div>
+    <div class="stat"><%= "ST" %></div>
+    <!--<div class="stat" id="blk"><%#= pg_stat.blk %></div>-->
+    <div class="stat"><%= "TO" %></div>
+    <div class="stat"><%= "PF" %></div>
+    <div class="r-stat"><%= "PTS" %></div>
+    <div class="clear"></div>
+  </div>
+
+  <% PlayerGameStatistic.by_game_and_team(@game, @game.visiting_team).each do |pg_stat| %>
+    <div class="table-row">
+      <div class="stat" id="number"><%= pg_stat.player.number(@game.visiting_team) %></div>
+      <div class="stat" id="name"><%= pg_stat.player.last_name %></div>
+      <div class="stat" id="fg"><%= pg_stat.print_fg %></div>
+      <div class="stat" id="fg%"><%= pg_stat.fg_percent %></div>
+      <div class="stat" id="tp"><%= pg_stat.print_tp %></div>
+      <div class="stat" id="tp%"><%= pg_stat.tp_percent %></div>
+      <div class="stat" id="ft"><%= pg_stat.print_ft %></div>
+      <div class="stat" id="ft%"><%= pg_stat.ft_percent %></div>
+      <div class="stat" id="dreb"><%= pg_stat.drb %></div>
+      <div class="stat" id="oreb"><%= pg_stat.orb %></div>
+      <div class="stat" id="reb"><%= pg_stat.total_rebounds %></div>
+      <div class="stat" id="ast"><%= pg_stat.ast %></div>
+      <div class="stat" id="st"><%= pg_stat.s %></div>
+      <!--<div class="stat" id="blk"><%#= pg_stat.blk %></div>-->
+      <div class="stat" id="to"><%= pg_stat.to %></div>
+      <div class="stat" id="pf"><%= pg_stat.pf %></div>
+      <div class="r-stat" id="points"><%= pg_stat.total_points %></div>
+      <div class="clear"></div>
+    </div>
+  <% end %>
+  <div class="table-summary">Summary</div>
+</div>

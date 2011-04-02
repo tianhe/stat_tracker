@@ -23,6 +23,9 @@ $(document).ready(function(){
         $("#ast-to").text(stats["ast"]+" / "+stats["to"]);
         $("#s-pf").text(stats["s"]+" / "+stats["pf"]);
       });
+
+
+
   });
 });
 

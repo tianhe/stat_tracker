@@ -1,4 +1,4 @@
-class StatisticsController < ActionController::Base
+class StatisticsController < ApplicationController
   def season
 
   end

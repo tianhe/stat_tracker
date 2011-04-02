@@ -7,18 +7,22 @@ $(document).ready(function(){
 
 //    player_attribute = $("li#team_players_attributes_"+index+"_first_name_input");
 
-    var prefix = "team[players_attributes]["+index+"][first_name]";
-    var input_element = $("<input/>", {name: prefix});
+    var first_name = "team[players_attributes]["+index+"][first_name]";
+    var first_name_input_element = $("<input/>", {name: first_name});
+
+    var last_name = "team[players_attributes]["+index+"][last_name]";
+    var last_name_input_element = $("<input/>", {name: last_name});
+
+    var number = "team[team_players_attributes]["+index+"][number]";
+    var number_input_element = $("<input/>", {name: number});
+
     var form = $("#players");
 
-    console.log(form);
-    console.log(input_element);
-
-    form.append(input_element);
+    form.append("First Name, Last Name");
+    form.append(first_name_input_element);
+    form.append(last_name_input_element);
+    form.append(number_input_element);
+    form.append($("<br>"));
     index++;
-//    $("li#team_players_attributes_"+index+"_last_name_input");
-//    <li id="team_players_attributes_0_first_name_input" class="string optional">
-//        <input id="team_players_attributes_0_first_name" type="text" name="team[players_attributes][0][first_name]" maxlength="255">
-//    </li>
   });
 });

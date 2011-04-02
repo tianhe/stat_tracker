@@ -2,9 +2,9 @@
   <li>Time | Description | Teams</li>
 <% @games.each do |game| %>
   <li><%= game.time %> |
-    <%= link_to game.description, track_game_url(:id => game.id) %> |
-    <%= link_to game.visiting_team.name, edit_team_path(game.visiting_team) %> vs.
-    <%= link_to game.home_team.name, edit_team_path(game.home_team) %>
+    <%= link_to game.description, "games/#{game.id}/statistics" %> |
+    <%= link_to "#{game.visiting_team.name} vs. #{game.home_team.name}",
+                edit_player_game_statistic_path(game.player_game_statistics.first) %>
   </li>
 <% end %>
 </ul>

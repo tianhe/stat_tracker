@@ -1,4 +1,4 @@
-class GamesController < ActionController::Base
+class GamesController < ApplicationController
 
   def new
     @game = Game.new
@@ -17,5 +17,9 @@ class GamesController < ActionController::Base
 
   def index
     @games = Game.all
+  end
+
+  def statistics
+    @game = Game.find(params[:game_id])
   end
 end

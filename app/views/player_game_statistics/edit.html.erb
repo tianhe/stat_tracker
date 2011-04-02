@@ -1,29 +1,34 @@
 
-<html>
-<%= stylesheet_link_tag "game_statistics" %>
-<%= javascript_include_tag "jquery.min.js","rails.js","game_statistics.js" %>
-
+<div class="main">
   <div id="visiting_team">
     Visiting Team
-    <% PlayerGameStatistic.game_statistics_for_team(@player_game_statistic.game,
+    <% PlayerGameStatistic.by_game_and_team(@player_game_statistic.game,
                                                     @player_game_statistic.game.visiting_team)\
        .each do |pg_stats| %>
-      <%= link_to pg_stats.player.first_name, edit_player_game_statistic_path(pg_stats) %>
+      <%= link_to "#{pg_stats.player.first_name}\
+      (#{pg_stats.player.number(@player_game_statistic.game.visiting_team)})",\
+      edit_player_game_statistic_path(pg_stats) %>
     <% end %>
   </div>
 
   <div id="home_team">
     Home Team
-    <% PlayerGameStatistic.game_statistics_for_team(@player_game_statistic.game,
+    <% PlayerGameStatistic.by_game_and_team(@player_game_statistic.game,
                                                     @player_game_statistic.game.home_team)\
        .each do |pg_stats| %>
-      <%= link_to pg_stats.player.first_name, edit_player_game_statistic_path(pg_stats) %>
+      <%= link_to "#{pg_stats.player.first_name}\
+      (#{pg_stats.player.number(@player_game_statistic.game.home_team)})",\
+      edit_player_game_statistic_path(pg_stats) %>
     <% end %>
   </div>
 
+  <div id="game">
+    <br>Game: <%= @player_game_statistic.game.description %>
+    <br>Points:  <%= @player_game_statistic.game.visiting_team_points %> vs.
+              <%= @player_game_statistic.game.home_team_points %>
+  </div>
 
   <div id="player">
-    Game: <%= @player_game_statistic.description %>
     <br>Player: <%= "#{@player_game_statistic.player.first_name} #{@player_game_statistic.player\
                     .last_name}" %>
     <br>Date: <%= @player_game_statistic.created_at %>
@@ -47,4 +52,4 @@
       </ul>
     <% end %>
   </div>
-</html>
+</div>

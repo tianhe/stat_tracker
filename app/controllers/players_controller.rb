@@ -1,4 +1,4 @@
-class PlayersController < ActionController::Base
+class PlayersController < ApplicationController
   def create
     @player = Player.new
     @player.update_attributes(params[:player])

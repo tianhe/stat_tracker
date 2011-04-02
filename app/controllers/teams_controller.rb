@@ -1,4 +1,4 @@
-class TeamsController < ActionController::Base
+class TeamsController < ApplicationController
   def create
     @team = Team.new
     @team.update_attributes(params[:team])

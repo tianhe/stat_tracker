@@ -16,3 +16,64 @@ ul.display-pair li {
   background: #ccc;
   vertical-align: top;
 }
+
+div.table-wrapper{
+  background: none repeat scroll 0 0 #CC9966;
+  border: 1px solid #333333;
+  color: #000000;
+  margin: 0.5em 12px;
+  padding: 0;
+  text-align: center;
+  width: auto;
+}
+
+div.table-caption {
+  text-align: center;
+}
+
+div.table-summary {
+  background: none repeat scroll 0 0 transparent;
+  color: #3333CC;
+  font-family: sans-serif;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+  margin: 0;
+  padding: 0.3em;
+  text-align: center;
+  width: auto;
+}
+
+div.table-row {
+  background: none repeat scroll 0 0 #FFFFCC;
+  border: 1px solid #000000;
+  color: #000000;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  width: 96%;
+}
+
+
+div.stat{
+  border: medium none;
+  float: left;
+  margin: 0;
+  padding: 0;
+  width: 6%;
+}
+
+div.r-stat{
+  border: medium none;
+  float: right;
+  margin: 0;
+  padding: 0;
+  width: 5%;
+}
+
+div.spaceline{
+  clear: both;
+  margin: 0;
+  padding: 0;
+  width: auto;
+}

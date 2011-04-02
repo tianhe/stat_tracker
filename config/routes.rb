@@ -21,13 +21,10 @@ StatTracker::Application.routes.draw do
 
   resources :players
   resources :teams
-  resources :games
-  resources :statistics do
-    get 'season'
-    get 'player'
-    get 'game'
-    get 'team'
+  resources :games do
+    get 'statistics'
   end
+
   # Sample resource route with options:
   #   resources :products do
   #     member do

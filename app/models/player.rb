@@ -6,4 +6,9 @@ class Player < ActiveRecord::Base
   def name
     first_name+" "+last_name
   end
+
+  def number team
+    team_players.select{ |tp| tp.team_id == team.id }.first.number
+  end
 end
+
