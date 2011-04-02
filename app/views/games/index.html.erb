@@ -1,9 +1,11 @@
 <ul>
-  <li>Time | Description | Teams</li>
+  <li>Date  | Description | Teams</li>
 <% @games.each do |game| %>
-  <li><%= game.time %> |
-    <%= link_to game.description, "games/#{game.id}/statistics" %> |
-    <%= link_to "#{game.visiting_team.name} vs. #{game.home_team.name}",
+  <li><%= game.time.strftime("%m/%d") %> |
+    <%= "#{game.description}" %> |
+    <%= "#{game.visiting_team.name} vs. #{game.home_team.name}" %> |
+    <%= link_to "View Stats", "games/#{game.id}/statistics" %> |
+    <%= link_to "Track Stats",
                 edit_player_game_statistic_path(game.player_game_statistics.first) %>
   </li>
 <% end %>

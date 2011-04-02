@@ -1,6 +1,7 @@
+<% [@game.visiting_team, @game.home_team].each do |team|  %>
 <div class="table-wrapper">
   <div class="table-caption">
-      <%= @game.visiting_team.name %>    
+      <%= team.name %>
   </div>
 
   <div class="table-row">
@@ -24,16 +25,19 @@
     <div class="clear"></div>
   </div>
 
-  <% PlayerGameStatistic.by_game_and_team(@game, @game.visiting_team).each do |pg_stat| %>
+  <% PlayerGameStatistic.by_game_and_team(@game, team).each do |pg_stat| %>
     <div class="table-row">
-      <div class="stat" id="number"><%= pg_stat.player.number(@game.visiting_team) %></div>
+      <div class="stat" id="number"><%= pg_stat.player.number(team) %></div>
       <div class="stat" id="name"><%= pg_stat.player.last_name %></div>
       <div class="stat" id="fg"><%= pg_stat.print_fg %></div>
-      <div class="stat" id="fg%"><%= pg_stat.fg_percent %></div>
+      <div class="stat" id="fg%"><%= number_to_percentage pg_stat.fg_percent,
+                                                          :precision => 0 %></div>
       <div class="stat" id="tp"><%= pg_stat.print_tp %></div>
-      <div class="stat" id="tp%"><%= pg_stat.tp_percent %></div>
+      <div class="stat" id="tp%"><%= number_to_percentage pg_stat.tp_percent,
+                                                          :precision => 0 %></div>
       <div class="stat" id="ft"><%= pg_stat.print_ft %></div>
-      <div class="stat" id="ft%"><%= pg_stat.ft_percent %></div>
+      <div class="stat" id="ft%"><%= number_to_percentage pg_stat.ft_percent,
+                                                          :precision => 0 %></div>
       <div class="stat" id="dreb"><%= pg_stat.drb %></div>
       <div class="stat" id="oreb"><%= pg_stat.orb %></div>
       <div class="stat" id="reb"><%= pg_stat.total_rebounds %></div>
@@ -48,3 +52,5 @@
   <% end %>
   <div class="table-summary">Summary</div>
 </div>
+
+<% end %>

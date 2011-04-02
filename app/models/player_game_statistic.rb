@@ -34,7 +34,7 @@ class PlayerGameStatistic < ActiveRecord::Base
   end
 
   def fg_percent
-    fgm/fga.to_f
+    fga==0 ? 0 : 100*fgm/fga
   end
 
   def print_tp
@@ -42,7 +42,7 @@ class PlayerGameStatistic < ActiveRecord::Base
   end
 
   def tp_percent
-    tpm/tpa.to_f
+    tpa==0 ? 0 : 100*tpm/tpa
   end
 
   def print_ft
@@ -50,7 +50,7 @@ class PlayerGameStatistic < ActiveRecord::Base
   end
 
   def ft_percent
-    ftm/fta.to_f
+    fta==0 ? 0 : 100*ftm/fta
   end
 
 
