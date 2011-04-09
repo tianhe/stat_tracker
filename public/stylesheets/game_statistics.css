@@ -25,6 +25,22 @@ ul.display-pair li {
   vertical-align: top;
 }
 
+ul.display-pair div.inc{
+  float:left;
+  width: 75px;
+  min-height: 25px;
+  background: #ccc;
+}
+
+ul.display-pair div.dec{
+  /*display:inline-block;*/
+  float:left;
+  position: relative;
+  width: 25px;
+  min-height: 25px;
+  background: #f00;
+}
+
 div.table-wrapper{
   background: none repeat scroll 0 0 #CC9966;
   border: 1px solid #333333;

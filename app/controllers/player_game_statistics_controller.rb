@@ -20,8 +20,13 @@ class PlayerGameStatisticsController < ApplicationController
 
   def update
     @player_game_statistic = PlayerGameStatistic.find params[:id]
-    @player_game_statistic.tally params[:field].to_sym
-    render :nothing => true
+    field, operation = params[:field].split("_")
+    operation = (operation == "dec") ? :decrement! : :increment!
+    @player_game_statistic.tally operation, field.to_sym
+    respond_to do |format|
+      format.html { render edit_player_game_statistic_path(@player_game_statistic) }
+      format.js
+    end
   end
 
   def show

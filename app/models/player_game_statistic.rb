@@ -2,16 +2,16 @@ class PlayerGameStatistic < ActiveRecord::Base
   belongs_to :game
   belongs_to :player
 
-  def tally field
-    self.increment! field
-    self.increment! (field[0..1]+"a").to_sym if [:fgm, :ftm, :tpm].include?(field)
+  def tally operation, field
+    self.send(operation, field)
+    self.send(operation, (field[0..1]+"a").to_sym) if [:fgm, :ftm, :tpm].include?(field)
 
     if field == :tpm
-      self.increment!(:fgm)
-      self.increment!(:fga)
+      self.send(operation, :fgm)
+      self.send(operation, :fga)
     end
 
-    self.increment!(:fga) if field == :tpa
+    self.send(operation, :fga) if field == :tpa
   end
 
   def find_team

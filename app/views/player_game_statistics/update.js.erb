@@ -1,0 +1,6 @@
+$("#fgm-fga").text("<%= escape_javascript(@player_game_statistic.fgm.to_s+" / "+@player_game_statistic.fga.to_s) %>");
+$("#ftm-fta").text("<%= escape_javascript(@player_game_statistic.ftm.to_s+" / "+@player_game_statistic.fta.to_s) %>");
+$("#tpm-tpa").text("<%= escape_javascript(@player_game_statistic.tpm.to_s+" / "+@player_game_statistic.tpa.to_s) %>");
+$("#orb-drb").text("<%= escape_javascript(@player_game_statistic.orb.to_s+" / "+@player_game_statistic.drb.to_s) %>");
+$("#ast-to").text("<%= escape_javascript(@player_game_statistic.ast.to_s+" / "+@player_game_statistic.to.to_s) %>");
+$("#s-pf").text("<%= escape_javascript(@player_game_statistic.s.to_s+" / "+@player_game_statistic.pf.to_s) %>");

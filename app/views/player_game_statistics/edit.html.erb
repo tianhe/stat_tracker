@@ -37,15 +37,21 @@
   <%= form_for @player_game_statistic, :remote => true do |f| %>
   <% end %>
 
-  <% left = %w(fgm ftm tpm orb ast s)  %>
-  <% right = %w(fga fta tpa drb to pf)  %>
+  <% left = %w(fgm tpm ftm orb ast s)  %>
+  <% right = %w(fga tpa fta drb to pf)  %>
   <% pairs = left.zip(right) %>
 
   <div id="statistic" >
     <% pairs.each do |p| %>
       <ul class="display-pair">
-        <li id="<%= p.first %>" class="clickable"><%= p.first %></li>
-        <li id="<%= p.last %>" class="clickable"><%= p.last %></li>
+        <li>
+          <div id="<%= p.first %>_inc" class="clickable inc"><%= p.first %></div>
+          <div id="<%= p.first %>_dec" class="clickable dec">-</div>
+        </li>
+        <li>
+          <div id="<%= p.last %>_inc" class="clickable inc"><%= p.last %></div>
+          <div id="<%= p.last %>_dec" class="clickable dec">-</div>
+        </li>
         <li id="<%= "#{p.first}-#{p.last}" %>">
           <%= @player_game_statistic.send(p.first) %> / <%= @player_game_statistic.send(p.last) %>
         </li>
