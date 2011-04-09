@@ -1,0 +1,133 @@
+<%= @player.name %>
+
+<div class="table-wrapper">
+  <div class="table-caption">
+     Season Totals
+  </div>
+
+  <div class="table-row">
+    <div class="stat"><%= "Season" %></div>
+    <div class="stat">&nbsp</div>
+    <div class="stat"><%= "FG" %></div>
+    <div class="stat"><%= "%" %></div>
+    <div class="stat"><%= "3PT" %></div>
+    <div class="stat"><%= "3PT%" %></div>
+    <div class="stat"><%= "FT" %></div>
+    <div class="stat"><%= "FT%" %></div>
+    <div class="stat"><%= "DREB" %></div>
+    <div class="stat"><%= "OREB" %></div>
+    <div class="stat"><%= "REB" %></div>
+    <div class="stat"><%= "AST" %></div>
+    <div class="stat"><%= "ST" %></div>
+    <!--<div class="stat" id="blk"><%#= pg_stat.blk %></div>-->
+    <div class="stat"><%= "TO" %></div>
+    <div class="stat"><%= "PF" %></div>
+    <div class="r-stat"><%= "PTS" %></div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="table-row">
+    <div class="stat" id="date">Spr '11</div>
+    <div class="stat">&nbsp</div>
+    <div class="stat" id="fg"><%= @player.season_fg %></div>
+    <div class="stat" id="fg%"><%= number_to_percentage @player.season_fg_percent,
+                                                        :precision => 0 %></div>
+    <div class="stat" id="tp"><%= @player.season_tp %></div>
+    <div class="stat" id="tp%"><%= number_to_percentage @player.season_tp_percent,
+                                                        :precision => 0 %></div>
+    <div class="stat" id="ft"><%= @player.season_ft %></div>
+    <div class="stat" id="ft%"><%= number_to_percentage @player.season_ft_percent,
+                                                        :precision => 0 %></div>
+    <div class="stat" id="dreb"><%= @player.season_drb %></div>
+    <div class="stat" id="oreb"><%= @player.season_orb %></div>
+    <div class="stat" id="reb"><%= @player.season_total_rebounds %></div>
+    <div class="stat" id="ast"><%= @player.season_ast %></div>
+    <div class="stat" id="st"><%= @player.season_s %></div>
+    <!--<div class="stat" id="blk"><%#= @player.season_blk %></div>-->
+    <div class="stat" id="to"><%= @player.season_to %></div>
+    <div class="stat" id="pf"><%= @player.season_pf %></div>
+    <div class="r-stat" id="points"><%= @player.season_total_points %></div>
+    <div class="clear"></div>
+  </div>
+  <div class="table-summary">Summary</div>
+</div>
+
+
+
+<div class="table-wrapper">
+  <div class="table-caption">
+      Game Stats
+  </div>
+
+  <div class="table-row">
+    <div class="stat"><%= "Season" %></div>
+    <div class="stat">&nbsp</div>
+    <div class="stat"><%= "FG" %></div>
+    <div class="stat"><%= "%" %></div>
+    <div class="stat"><%= "3PT" %></div>
+    <div class="stat"><%= "3PT%" %></div>
+    <div class="stat"><%= "FT" %></div>
+    <div class="stat"><%= "FT%" %></div>
+    <div class="stat"><%= "DREB" %></div>
+    <div class="stat"><%= "OREB" %></div>
+    <div class="stat"><%= "REB" %></div>
+    <div class="stat"><%= "AST" %></div>
+    <div class="stat"><%= "ST" %></div>
+    <!--<div class="stat" id="blk"><%#= pg_stat.blk %></div>-->
+    <div class="stat"><%= "TO" %></div>
+    <div class="stat"><%= "PF" %></div>
+    <div class="r-stat"><%= "PTS" %></div>
+    <div class="clear"></div>
+  </div>
+
+  <% @player_game_statistics.each do |pg_stat|  %>
+    <div class="table-row">
+      <div class="stat"><%= pg_stat.game.time.strftime("%m/%d") %></div>
+      <div class="stat">&nbsp</div>
+      <div class="stat"><%= pg_stat.print_fg %></div>
+      <div class="stat"><%= number_to_percentage pg_stat.fg_percent,
+                                                          :precision => 0 %></div>
+      <div class="stat"><%= pg_stat.print_tp %></div>
+      <div class="stat"><%= number_to_percentage pg_stat.tp_percent,
+                                                          :precision => 0 %></div>
+      <div class="stat"><%= pg_stat.print_ft %></div>
+      <div class="stat"><%= number_to_percentage pg_stat.ft_percent,
+                                                          :precision => 0 %></div>
+      <div class="stat"><%= pg_stat.drb %></div>
+      <div class="stat"><%= pg_stat.orb %></div>
+      <div class="stat"><%= pg_stat.total_rebounds %></div>
+      <div class="stat"><%= pg_stat.ast %></div>
+      <div class="stat"><%= pg_stat.s %></div>
+      <!--<div class="stat" id="blk"><%#= pg_stat.blk %></div>-->
+      <div class="stat"><%= pg_stat.to %></div>
+      <div class="stat"><%= pg_stat.pf %></div>
+      <div class="r-stat"><%= pg_stat.total_points %></div>
+      <div class="clear"></div>
+    </div>
+  <% end %>
+
+  <div class="table-row">
+    <div class="stat">Avg</div>
+    <div class="stat">&nbsp</div>
+    <div class="stat"><%= @player.per_game_fg %></div>
+    <div class="stat"><%= number_to_percentage @player.season_fg_percent,
+                                                        :precision => 0 %></div>
+    <div class="stat"><%= @player.per_game_tp %></div>
+    <div class="stat"><%= number_to_percentage @player.season_tp_percent,
+                                                        :precision => 0 %></div>
+    <div class="stat"><%= @player.per_game_ft %></div>
+    <div class="stat"><%= number_to_percentage @player.season_ft_percent,
+                                                        :precision => 0 %></div>
+    <div class="stat"><%= @player.season_drb/@player.season_games.to_f %></div>
+    <div class="stat"><%= @player.season_orb/@player.season_games.to_f %></div>
+    <div class="stat"><%= @player.season_total_rebounds/@player.season_games.to_f %></div>
+    <div class="stat"><%= @player.season_ast/@player.season_games.to_f %></div>
+    <div class="stat"><%= @player.season_s/@player.season_games.to_f %></div>
+    <!--<div class="stat" id="blk"><%#= @player.season_blk %></div>-->
+    <div class="stat"><%= @player.season_to/@player.season_games.to_f %></div>
+    <div class="stat"><%= @player.season_pf/@player.season_games.to_f %></div>
+    <div class="r-stat"><%= @player.season_total_points/@player.season_games.to_f %></div>
+    <div class="clear"></div>
+  </div>
+  <div class="table-summary">Element Athletics</div>
+</div>

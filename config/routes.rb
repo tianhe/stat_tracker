@@ -12,13 +12,7 @@ StatTracker::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :player_game_statistics do
-    get 'track'
-  end
-
-  match 'player_game_statistics/:id/track_game' => 'player_game_statistics#track_game',
-        :as => :track_game
-
+  resources :player_game_statistics
   resources :players
   resources :teams
   resources :games do

@@ -1,12 +1,22 @@
-<ul>
-  <li>Date  | Description | Teams</li>
-<% @games.each do |game| %>
-  <li><%= game.time.strftime("%m/%d") %> |
-    <%= "#{game.description}" %> |
-    <%= "#{game.visiting_team.name} vs. #{game.home_team.name}" %> |
-    <%= link_to "View Stats", "games/#{game.id}/statistics" %> |
-    <%= link_to "Track Stats",
+<div class="table-wrapper">
+  <div class="game-table-row">
+    <% %w(Date Description Teams Statistics).each do |title| %>
+    <div class="game-cell"><%= title %></div>
+    <% end %>
+  </div>
+
+  <% @games.each do |game| %>
+  <div class="game-table-row">
+    <div class="game-cell"><%= game.time.strftime("%m/%d") %></div>
+    <div class="game-cell"><%= "#{game.description}" %></div>
+    <div class="game-cell"><%= "#{game.visiting_team.name} vs. #{game.home_team.name}" %></div>
+    <div class="game-cell">
+      <%= link_to "View", "games/#{game.id}/statistics" %>     
+      <%#= link_to "Track",
+                "player_game_statistics/#{game.id}/track_game" %>
+      <%= link_to "Track",
                 edit_player_game_statistic_path(game.player_game_statistics.first) %>
-  </li>
-<% end %>
-</ul>
+    </div>
+  </div>
+  <% end %>
+</div>

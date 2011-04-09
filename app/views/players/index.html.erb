@@ -1,12 +1,16 @@
-<ul>
-  <li>Id | Last Name, First Name | Email | Team Id</li>
-  <% @players.each do |player| %>
+<div class="table-wrapper">
+  <div class="players-table-row">
+    <% %w(Name Team Number Stats).each do |title| %>
+    <div class="player-cell"><%= title %></div>
+    <% end %>
+  </div>
 
-  <li>
-    <%= player.id %> |
-    <%= link_to "#{player.last_name}, #{player.first_name}", edit_player_path(player) %> |
-    <%= player.email %> |
-    <%= player.teams.first.name %>
-  </li>
+  <% @players.each do |player| %>
+  <div class="players-table-row">
+    <div class="player-cell"><%= link_to "#{player.name}", edit_player_path(player) %></div>
+    <div class="player-cell"><%= player.teams.first.name %></div>
+    <div class="player-cell"><%= player.team_players.first.number %></div>
+    <div class="player-cell"><%= link_to "Season", player_path(player) %></div>
+  </div>
 <% end %>
-</ul>
+</div>

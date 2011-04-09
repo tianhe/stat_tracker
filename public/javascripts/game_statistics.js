@@ -24,8 +24,6 @@ $(document).ready(function(){
         $("#s-pf").text(stats["s"]+" / "+stats["pf"]);
       });
 
-
-
   });
 });
 

@@ -1,9 +1,0 @@
-<ul>
-  <li>Time | Player</li>
-<% @game_statistics.each do |game_stats| %>
-  <li><%= link_to game_stats.description, edit_game_statistic_path(game_stats) %> |
-  <%= "#{game_stats.player.name}" %> |
-  <%= game_stats.created_at %>
-  </li>
-<% end %>
-</ul>

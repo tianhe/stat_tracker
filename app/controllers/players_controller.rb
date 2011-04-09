@@ -23,6 +23,11 @@ class PlayersController < ApplicationController
     @player = Player.new
   end
 
+  def show
+    @player = Player.find params[:id]
+    @player_game_statistics = @player.player_game_statistics
+  end
+
   def index
     @players = Player.all
   end
